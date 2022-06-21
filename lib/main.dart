@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:resume_website/providers/buttonProvider.dart';
 import 'package:resume_website/screens/homepage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'providers/infoprovider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => InfoProvider()),
+    ChangeNotifierProvider(create: (_) => ButtonProvider()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,12 +24,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
-        textTheme: GoogleFonts.robotoTextTheme(
+        textTheme: GoogleFonts.interTextTheme(
           Theme.of(context).textTheme,
         ),
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+      },
     );
   }
 }
