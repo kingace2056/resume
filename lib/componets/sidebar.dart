@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:resume_website/componets/sidebar_intro.dart';
-import 'package:resume_website/constraints.dart';
+import 'package:Sarthak_parajuli/componets/sidebar_intro.dart';
+import 'package:Sarthak_parajuli/constraints.dart';
 
 class bodyDrawer extends StatelessWidget {
   const bodyDrawer({
@@ -54,9 +54,9 @@ class bodyDrawer extends StatelessWidget {
                     ),
                     const Expanded(
                       child: AnimatedProgressIndicator(
-                        barColor: primaryColor,
-                        percent: 0.75,
-                        label: "Flutter",
+                        barColor: Colors.deepPurpleAccent,
+                        percent: 0.8,
+                        label: "HTML",
                       ),
                     ),
                     const SizedBox(
@@ -65,8 +65,8 @@ class bodyDrawer extends StatelessWidget {
                     const Expanded(
                       child: AnimatedProgressIndicator(
                         barColor: Colors.red,
-                        percent: 0.75,
-                        label: "Flutter",
+                        percent: 0.6,
+                        label: "CSS",
                       ),
                     ),
                   ],

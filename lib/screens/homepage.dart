@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resume_website/constraints.dart';
+import 'package:Sarthak_parajuli/constraints.dart';
 
 import '../componets/sidebar.dart';
 

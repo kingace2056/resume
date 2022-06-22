@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:resume_website/constraints.dart';
-import 'package:resume_website/screens/homepage.dart';
+import 'package:Sarthak_parajuli/constraints.dart';
+import 'package:Sarthak_parajuli/screens/homepage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Sarthak Parajuli | Flutter Developer | 🇳🇵 🇳🇵 🇳🇵',
       theme: ThemeData.dark().copyWith(
         useMaterial3: true,
         textTheme: GoogleFonts.poppinsTextTheme(
