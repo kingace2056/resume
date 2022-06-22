@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const profileAvatar = 'https://avatars.githubusercontent.com/u/46929074?v=4';
 const fName = 'Sarthak';
-const lName = 'Parajuli';
+const lName = ' Parajuli';
 const primaryColor = Color(0xFFFFC107);
 const secondaryColor = Color(0xFF242430);
 const darkColor = Color(0xFF191923);

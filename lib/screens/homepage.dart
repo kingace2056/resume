@@ -24,6 +24,21 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: Container(
+        height: 30,
+        width: MediaQuery.of(context).size.width,
+        color: Colors.lightBlue,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Made with ❤️ using Flutter 3',
+              style: Theme.of(context).textTheme.subtitle1,
+            )
+          ],
+        ),
+      ),
     );
   }
 }
