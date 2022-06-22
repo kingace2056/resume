@@ -11,7 +11,7 @@ class introSarthak extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1.23,
       child: Container(
-        color: const Color(0xff242438),
+        color: bgInfoTop,
         child: Column(
           children: [
             const Spacer(

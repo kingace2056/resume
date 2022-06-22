@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: Container(
         height: 30,
         width: MediaQuery.of(context).size.width,
-        color: Colors.lightBlue,
+        color: bgInfoTop,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
