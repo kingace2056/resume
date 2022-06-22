@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:resume_website/providers/buttonProvider.dart';
+import 'package:resume_website/constraints.dart';
 import 'package:resume_website/screens/homepage.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-
-import 'providers/infoprovider.dart';
 
 void main() {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_) => InfoProvider()),
-    ChangeNotifierProvider(create: (_) => ButtonProvider()),
-  ], child: const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,12 +16,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
+      theme: ThemeData.dark().copyWith(
         useMaterial3: true,
-        textTheme: GoogleFonts.interTextTheme(
+        textTheme: GoogleFonts.poppinsTextTheme(
           Theme.of(context).textTheme,
-        ),
-        primarySwatch: Colors.blue,
+        )
+            .apply(bodyColor: Colors.white)
+            .copyWith(bodyText1: TextStyle(color: bodyTextColor)),
       ),
       initialRoute: '/',
       routes: {

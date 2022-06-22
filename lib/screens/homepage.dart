@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:resume_website/widgets/sidebar.dart';
+import 'package:resume_website/constraints.dart';
 
-import '../providers/infoprovider.dart';
+import '../componets/sidebar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,12 +9,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+      body: Center(
+        child: Container(
+          constraints: const BoxConstraints(maxHeight: maxWidth),
           child: Row(
             children: [
-              SideBar(),
+              Expanded(flex: 2, child: bodyDrawer()),
+              Expanded(
+                  flex: 7,
+                  child: Container(
+                    color: Colors.blue,
+                  ))
             ],
           ),
         ),
