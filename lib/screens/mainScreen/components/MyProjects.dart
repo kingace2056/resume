@@ -13,30 +13,34 @@ class MyProjects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Project Showcase',
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        const SizedBox(
-          height: defaultPadding,
-        ),
-        const Responsive(
-            mobile: ProjectGridview(
-              crossAxisCount: 1,
-            ),
-            mobileLarge: ProjectGridview(
-              crossAxisCount: 2,
-              childAspectRatio: 1.6,
-            ),
-            desktop: ProjectGridview(),
-            tablet: ProjectGridview(
-              childAspectRatio: 1.13,
-              crossAxisCount: 2,
-            ))
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Project Showcase',
+            style: Theme.of(context).textTheme.headline6,
+          ),
+          const SizedBox(
+            height: defaultPadding,
+          ),
+          const Responsive(
+              mobile: ProjectGridview(
+                crossAxisCount: 1,
+                childAspectRatio: 3 / 2.9,
+              ),
+              mobileLarge: ProjectGridview(
+                crossAxisCount: 2,
+                // childAspectRatio: 1.6,
+              ),
+              desktop: ProjectGridview(),
+              tablet: ProjectGridview(
+                childAspectRatio: 1.13,
+                crossAxisCount: 3,
+              ))
+        ],
+      ),
     );
   }
 }
@@ -99,7 +103,7 @@ class ProjectCard extends StatelessWidget {
                 project.description!,
                 style: const TextStyle(height: 1.5),
                 overflow: TextOverflow.ellipsis,
-                maxLines: 4,
+                maxLines: Responsive.isMobileLarge(context) ? 3 : 4,
               ),
             ],
           ),

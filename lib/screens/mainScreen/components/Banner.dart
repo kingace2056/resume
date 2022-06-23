@@ -12,7 +12,7 @@ class BannerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 3,
+      aspectRatio: 2.8,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -32,26 +32,25 @@ class BannerWidget extends StatelessWidget {
                 Text(
                   'Welcome To The world Of \nSarthak !',
                   textAlign: TextAlign.start,
-                  style: Responsive.isDesktop(context)
+                  style: !Responsive.isMobileLarge(context)
                       ? Theme.of(context).textTheme.headline3?.copyWith(
                           fontWeight: FontWeight.bold, color: Colors.white)
-                      : Theme.of(context).textTheme.headline6?.copyWith(
+                      : Theme.of(context).textTheme.subtitle1?.copyWith(
                           fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 Row(
                   children: [
+                    Text(
+                      'Hello I\'m ',
+                      style: !Responsive.isMobileLarge(context)
+                          ? Theme.of(context).textTheme.subtitle1!
+                          : TextStyle(color: Colors.white),
+                    ),
                     if (!Responsive.isMobileLarge(context))
-                      Text(
-                        'Hello I\'m ',
-                        style: Theme.of(context).textTheme.subtitle1!,
+                      SizedBox(
+                        height: defaultPadding / 2,
                       ),
-                    if (!Responsive.isMobileLarge(context))
-                      if (Responsive.isDesktop(context))
-                        const SizedBox(
-                          height: defaultPadding / 2,
-                        ),
-                    if (!Responsive.isMobileLarge(context))
-                      BannerAnimatedText(),
+                    BannerAnimatedText(),
                   ],
                 ),
                 SizedBox(
@@ -86,7 +85,9 @@ class BannerAnimatedText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTextStyle(
-      style: Theme.of(context).textTheme.subtitle1!,
+      style: !Responsive.isMobile(context)
+          ? Theme.of(context).textTheme.subtitle1!
+          : TextStyle(color: Colors.white),
       child: AnimatedTextKit(animatedTexts: [
         TyperAnimatedText('Sarthak Parajuli'),
         TyperAnimatedText('Flutter Developer'),

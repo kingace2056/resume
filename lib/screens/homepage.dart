@@ -54,11 +54,17 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            AnimatedTextKit(animatedTexts: [
-              TyperAnimatedText('Made with ❤️ using Flutter 3',
+            DefaultTextStyle(
+              style: !Responsive.isMobile(context)
+                  ? Theme.of(context).textTheme.subtitle1!
+                  : TextStyle(color: Colors.white),
+              child: AnimatedTextKit(animatedTexts: [
+                TyperAnimatedText(
+                  'Made with ❤️ using Flutter 3',
                   speed: const Duration(milliseconds: 50),
-                  textStyle: Theme.of(context).textTheme.subtitle1),
-            ]),
+                )
+              ]),
+            ),
           ],
         ),
       ),
