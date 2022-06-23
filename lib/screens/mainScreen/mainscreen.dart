@@ -12,7 +12,8 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const HomePage(children: [
       BannerWidget(),
-      Acheivement(),
+      //since no achievements yet
+      // Acheivement(),
       MyProjects(),
     ]);
   }

@@ -23,12 +23,13 @@ class MyProjects extends StatelessWidget {
         const SizedBox(
           height: defaultPadding,
         ),
-        Responsive(
+        const Responsive(
             mobile: ProjectGridview(
               crossAxisCount: 1,
             ),
             mobileLarge: ProjectGridview(
               crossAxisCount: 2,
+              childAspectRatio: 1.6,
             ),
             desktop: ProjectGridview(),
             tablet: ProjectGridview(
@@ -98,7 +99,7 @@ class ProjectCard extends StatelessWidget {
                 project.description!,
                 style: const TextStyle(height: 1.5),
                 overflow: TextOverflow.ellipsis,
-                maxLines: 5,
+                maxLines: 4,
               ),
             ],
           ),
