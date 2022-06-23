@@ -1,10 +1,15 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 import '../componets/sidebar.dart';
 import '../constraints.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    Key? key,
+    required this.childrens,
+  }) : super(key: key);
+  final List<Widget> childrens;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +22,10 @@ class HomePage extends StatelessWidget {
               Expanded(flex: 2, child: bodyDrawer()),
               Expanded(
                   flex: 7,
-                  child: Container(
-                    color: Colors.blue,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [...childrens],
+                    ),
                   ))
             ],
           ),
@@ -32,10 +39,11 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Made with ❤️ using Flutter 3',
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
+            AnimatedTextKit(animatedTexts: [
+              TyperAnimatedText('Made with ❤️ using Flutter 3',
+                  speed: Duration(milliseconds: 50),
+                  textStyle: Theme.of(context).textTheme.subtitle1),
+            ]),
           ],
         ),
       ),

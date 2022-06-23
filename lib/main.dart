@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_website/screens/mainScreen/mainscreen.dart';
 import '../constraints.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -20,15 +21,19 @@ class MyApp extends StatelessWidget {
       title: 'Sarthak Parajuli | Flutter Developer | 🇳🇵 🇳🇵 🇳🇵',
       theme: ThemeData.dark().copyWith(
         useMaterial3: true,
-        textTheme: GoogleFonts.poppinsTextTheme(
-          Theme.of(context).textTheme,
-        )
+        primaryColor: primaryColor,
+        scaffoldBackgroundColor: bgColor,
+        canvasColor: bgColor,
+        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
             .apply(bodyColor: Colors.white)
-            .copyWith(bodyText1: TextStyle(color: bodyTextColor)),
+            .copyWith(
+              bodyText1: TextStyle(color: bodyTextColor),
+              bodyText2: TextStyle(color: bodyTextColor),
+            ),
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(),
+        '/': (context) => MainScreen(),
       },
     );
   }

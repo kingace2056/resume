@@ -36,8 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: 
   url_launcher: ^6.1.3
-  percent_indicator:
-  provider: ^6.0.3
+  # percent_indicator:
+  # provider: ^6.0.3
+  font_awesome_flutter: 
+  animated_text_kit:
 
 dev_dependencies:
   flutter_test:
