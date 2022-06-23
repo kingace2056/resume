@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:Sarthak_parajuli/constraints.dart';
-import 'package:Sarthak_parajuli/screens/homepage.dart';
+import '../constraints.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+
+import 'screens/homepage.dart';
 
 void main() {
   runApp(const MyApp());

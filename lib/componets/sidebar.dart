@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:Sarthak_parajuli/componets/sidebar_intro.dart';
-import 'package:Sarthak_parajuli/constraints.dart';
+
+import '../constraints.dart';
+import 'sidebar_intro.dart';
 
 class bodyDrawer extends StatelessWidget {
   const bodyDrawer({

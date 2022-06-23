@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:Sarthak_parajuli/constraints.dart';
 
 import '../componets/sidebar.dart';
+import '../constraints.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
             Text(
               'Made with ❤️ using Flutter 3',
               style: Theme.of(context).textTheme.subtitle1,
-            )
+            ),
           ],
         ),
       ),
