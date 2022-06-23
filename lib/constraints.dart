@@ -9,6 +9,9 @@ const darkColor = Color(0xFF191923);
 const bodyTextColor = Color(0xFF8B8B8D);
 const bgColor = Color(0xFF1E1E28);
 const bgInfoTop = Color(0xff242438);
+const flutColor = Color(0xFF0553B1);
+const htmlColor = Color(0xFFF25D50);
+const dartColor = Color(0xFF6200EE);
 
 const defaultPadding = 20.0;
 const defaultDuration = Duration(seconds: 1); // we use it on our animation
