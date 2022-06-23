@@ -7,9 +7,9 @@ import '../constraints.dart';
 class HomePage extends StatelessWidget {
   const HomePage({
     Key? key,
-    required this.childrens,
+    required this.children,
   }) : super(key: key);
-  final List<Widget> childrens;
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +18,14 @@ class HomePage extends StatelessWidget {
         child: Container(
           constraints: const BoxConstraints(maxHeight: maxWidth),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(flex: 2, child: bodyDrawer()),
               Expanded(
                   flex: 7,
                   child: SingleChildScrollView(
                     child: Column(
-                      children: [...childrens],
+                      children: [...children],
                     ),
                   ))
             ],

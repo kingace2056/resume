@@ -1,55 +1,34 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:resume_website/constraints.dart';
 import 'package:resume_website/screens/homepage.dart';
+import 'components/Acheivement.dart';
+import 'components/Banner.dart';
+import '/models/project.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return HomePage(childrens: [
-      AspectRatio(
-        aspectRatio: 3,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image(
-              image: NetworkImage(bannerImage),
-              fit: BoxFit.cover,
-            ),
-            Container(
-              color: darkColor.withOpacity(0.66),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Welcome To The world Of \nSarthak !',
-                    textAlign: TextAlign.start,
-                    style: Theme.of(context).textTheme.headline3?.copyWith(
-                        fontWeight: FontWeight.bold, color: Colors.white),
-                  ),
-                  Row(
-                    children: [
-                      Text('Hello I\'m '),
-                      AnimatedTextKit(animatedTexts: [
-                        TyperAnimatedText('Sarthak Parajuli'),
-                        TyperAnimatedText('Flutter Developer'),
-                        TyperAnimatedText('Web Developer'),
-                        TyperAnimatedText('Computer Engineer'),
-                      ]),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-      )
+    return HomePage(children: [
+      const BannerWidget(),
+      const Acheivement(),
+      Text(
+        'Project Showcase',
+        style: Theme.of(context).textTheme.headline6,
+      ),
+      GridView.builder(
+          itemCount: 10,
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              childAspectRatio: 1.3,
+              crossAxisSpacing: defaultPadding,
+              mainAxisSpacing: defaultPadding),
+          itemBuilder: (context, index) => Container(
+                padding: EdgeInsets.all(defaultPadding),
+                color: secondaryColor,
+              ))
     ]);
   }
 }
