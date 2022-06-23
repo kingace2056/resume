@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:resume_website/responsive.dart';
 
 import '../componets/sidebar.dart';
 import '../constraints.dart';
@@ -14,13 +15,26 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: Responsive.isDesktop(context)
+          ? null
+          : AppBar(
+              backgroundColor: bgColor,
+              leading: Builder(
+                builder: (context) => IconButton(
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    icon: const Icon(Icons.menu)),
+              )),
+      drawer: const bodyDrawer(),
       body: Center(
         child: Container(
           constraints: const BoxConstraints(maxHeight: maxWidth),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(flex: 2, child: bodyDrawer()),
+              if (Responsive.isDesktop(context))
+                const Expanded(flex: 2, child: bodyDrawer()),
               Expanded(
                   flex: 7,
                   child: SingleChildScrollView(
@@ -42,7 +56,7 @@ class HomePage extends StatelessWidget {
           children: [
             AnimatedTextKit(animatedTexts: [
               TyperAnimatedText('Made with ❤️ using Flutter 3',
-                  speed: Duration(milliseconds: 50),
+                  speed: const Duration(milliseconds: 50),
                   textStyle: Theme.of(context).textTheme.subtitle1),
             ]),
           ],

@@ -31,8 +31,7 @@ List<Project> myProjects = [
       description:
           'AlgoVis: Algorithms visualized using React and P5.js . This is a project done by our group \'SASS\' as a fulfilment for Minor Project in our Bachelor of Engineering - Computer. It is the project to visualize different algorithms. Go through live link and explore it'),
   Project(
-      repo: 'https://github.com/kingace2056/algovis',
-      live: '',
+      repo: 'https://github.com/kingace2056/MajorProject-IDS',
       title: 'MajorProject-IDS',
       description:
           'Realtime Network Intrusion Detection Using RandomForest . This is a project done by our group \'SASS\' as a fulfilment for Major Project in our Bachelor of Engineering - Computer. It is the project to detect attacks in network and notify Admin.'),
