@@ -1,6 +1,16 @@
-# Sarthak_parajuli
+# Sarthak parajuli
 
-A new Flutter project.
+#  Flutter Project for Portfolio. 
+## Features 
+    - Made With Flutter 
+    - Responsive UI 
+    - Beautiful Colors 
+    - Added CSS loading animation(To complete the void that flutter web takes to load )
+    - ------------------------------------
+
+
+
+ Inspired From  <a href="https://www.youtube.com/c/TheFlutterWay">TheFlutterWay</a>
 
 ## Getting Started
 

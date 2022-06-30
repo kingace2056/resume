@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../constraints.dart';
 import 'AnimatedProgressIndicator.dart';
@@ -75,25 +77,37 @@ class bodyDrawer extends StatelessWidget {
                         children: [
                           Spacer(),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                launchUrlString(
+                                    'https://www.linkedin.com/in/sarthakparajuli/');
+                              },
                               icon: FaIcon(
                                 FontAwesomeIcons.linkedin,
                                 color: bodyTextColor,
                               )),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                launchUrlString(
+                                    'https://github.com/kingace2056');
+                              },
                               icon: FaIcon(
                                 FontAwesomeIcons.github,
                                 color: bodyTextColor,
                               )),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                launchUrlString(
+                                    'https://www.sarthakparajuli.com.np');
+                              },
                               icon: FaIcon(
                                 FontAwesomeIcons.earthAsia,
                                 color: bodyTextColor,
                               )),
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                launchUrlString(
+                                    'https://twitter.com/sarthakace10');
+                              },
                               icon: FaIcon(
                                 FontAwesomeIcons.twitter,
                                 color: bodyTextColor,
