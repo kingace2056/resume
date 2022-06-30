@@ -8,7 +8,6 @@ List<Project> myProjects = [
   Project(
       live:
           'https://play.google.com/store/apps/details?id=com.acestudios.AceWall',
-      repo: '',
       title: 'AceWall',
       description:
           'AceWall is an wallpaper app made using Flutter. It utilizes the power of Pexel to deliver millions of Wallpapers'),
