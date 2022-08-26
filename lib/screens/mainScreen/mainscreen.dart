@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_website/screens/mainScreen/components/Certifications.dart';
 
 import '/screens/homepage.dart';
 import 'components/Acheivement.dart';
@@ -15,6 +16,10 @@ class MainScreen extends StatelessWidget {
       //since no achievements yet
       // Acheivement(),
       MyProjects(),
+      SizedBox(
+        height: 10,
+      ),
+      MyBadges(),
     ]);
   }
 }
