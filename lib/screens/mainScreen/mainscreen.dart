@@ -20,6 +20,9 @@ class MainScreen extends StatelessWidget {
         height: 10,
       ),
       MyBadges(),
+      SizedBox(
+        height: 10,
+      )
     ]);
   }
 }
