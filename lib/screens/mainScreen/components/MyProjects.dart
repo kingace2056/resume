@@ -1,9 +1,11 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+import 'package:fluttericon/brandico_icons.dart';
+
 import 'package:resume_website/models/project.dart';
 import 'package:resume_website/responsive.dart';
 
-import 'package:url_launcher/url_launcher_string.dart';
 import '/constraints.dart';
 
 class MyProjects extends StatelessWidget {
@@ -107,6 +109,47 @@ class ProjectCard extends StatelessWidget {
               ),
             ],
           ),
+          project.lang!.isEmpty
+              ? const SizedBox(
+                  height: 1,
+                )
+              : Wrap(
+                  children: List.generate(
+                      project.lang!.length,
+                      (index) => Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Chip(
+                                padding: const EdgeInsets.all(4),
+                                avatar: Container(
+                                  decoration: BoxDecoration(
+                                      color: secondaryColor,
+                                      borderRadius: BorderRadius.circular(20),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(
+                                          project.lang!.values.elementAt(index),
+                                        ),
+                                      )),
+                                ),
+                                label:
+                                    Text(project.lang!.keys.elementAt(index))),
+                          )),
+                  //[
+
+                  // for (int i = 0; i <= project.lang!.length; i++)
+                  //   {
+                  //     Chip(
+                  //       elevation: 1,
+                  //       side: const BorderSide(
+                  //         color: Colors.white,
+                  //       ),
+                  //       label: Text(
+                  //           project.lang!.isEmpty ? '' : project.lang![i]),
+                  //     ),
+                  //   }
+
+                  // ],
+                ),
           Row(
             children: [
               if (project.live != null) ...[
