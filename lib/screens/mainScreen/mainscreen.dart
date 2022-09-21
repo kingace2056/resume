@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:resume_website/screens/mainScreen/components/Certifications.dart';
 
 import '/screens/homepage.dart';
-import 'components/Acheivement.dart';
+// import 'components/Acheivement.dart';
 import 'components/Banner.dart';
 import 'components/MyProjects.dart';
 

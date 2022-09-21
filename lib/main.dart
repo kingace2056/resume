@@ -4,8 +4,6 @@ import '../constraints.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-import 'screens/homepage.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -27,13 +25,13 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
             .apply(bodyColor: Colors.white)
             .copyWith(
-              bodyText1: TextStyle(color: bodyTextColor),
-              bodyText2: TextStyle(color: bodyTextColor),
+              bodyText1: const TextStyle(color: bodyTextColor),
+              bodyText2: const TextStyle(color: bodyTextColor),
             ),
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => MainScreen(),
+        '/': (context) => const MainScreen(),
       },
     );
   }
