@@ -15,6 +15,13 @@ List<Project> myProjects = [
       description: 'AceWall is an wallpaper app made using Flutter. It utilizes the power of Pexel to deliver millions of Wallpapers',
       lang: {'Flutter': flutterImg, 'Dart': dartImg}),
   Project(
+      live: 'https://aceshop.pages.dev',
+      title: 'AceShop',
+      lang: {'Flutter': flutterImg, 'Dart': dartImg, 'Node': nodeImg},
+      repo: 'https://github.com/kingace2056/AceShop',
+      description:
+          'AceShop is an Ecommerce App developed using Flutter with Node Backend. It is still under construction. If you are to check use Email: acestudios@gmail.com for user and admin@gmail.com for admin. Password: aceshop'),
+  Project(
       live: 'https://etherwall.netlify.app',
       repo: 'https://github.com/kingace2056/etherwall',
       title: 'EtherWall',

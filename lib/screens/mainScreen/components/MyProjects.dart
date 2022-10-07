@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:fluttericon/brandico_icons.dart';
+// import 'package:fluttericon/brandico_icons.dart';
 
 import 'package:resume_website/models/project.dart';
 import 'package:resume_website/responsive.dart';
@@ -36,7 +36,9 @@ class MyProjects extends StatelessWidget {
                 crossAxisCount: 2,
                 // childAspectRatio: 1.6,
               ),
-              desktop: ProjectGridview(),
+              desktop: ProjectGridview(
+                childAspectRatio: 3 / 3.3,
+              ),
               tablet: ProjectGridview(
                 childAspectRatio: 1.13,
                 crossAxisCount: 3,
@@ -87,28 +89,29 @@ class ProjectCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                project.title!,
-                style: Theme.of(context).textTheme.subtitle2,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-              ),
-              const SizedBox(
-                height: defaultPadding,
-              ),
-              Text(
+          Text(
+            project.title!,
+            style: Theme.of(context).textTheme.subtitle2,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+          ),
+          const SizedBox(
+            height: defaultPadding,
+          ),
+          Expanded(
+            flex: 3,
+            child: SingleChildScrollView(
+              child: Text(
                 project.description!,
                 style: const TextStyle(height: 1.5),
-                overflow: TextOverflow.ellipsis,
-                maxLines: Responsive.isMobileLarge(context) ? 3 : 4,
+                // overflow: TextOverflow.ellipsis,
+                // maxLines: Responsive.isMobileLarge(context) ? 6 : 7,
               ),
-            ],
+            ),
           ),
+          const Spacer(),
           project.lang!.isEmpty
               ? const SizedBox(
                   height: 1,
@@ -116,7 +119,7 @@ class ProjectCard extends StatelessWidget {
               : Expanded(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    physics: const NeverScrollableScrollPhysics(),
+                    // physics: const NeverScrollableScrollPhysics(),
                     child: Row(
                       children: List.generate(
                           project.lang!.length,
@@ -132,9 +135,9 @@ class ProjectCard extends StatelessWidget {
                                           image: DecorationImage(
                                             fit: BoxFit.cover,
                                             image: NetworkImage(
-                                              project.lang!.values
-                                                  .elementAt(index),
-                                            ),
+                                                project.lang!.values
+                                                    .elementAt(index),
+                                                headers: {}),
                                           )),
                                     ),
                                     label: Text(
