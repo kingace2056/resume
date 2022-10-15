@@ -60,7 +60,6 @@ List<Project> myProjects = [
       description:
           'IOT ui is an UI application(Under Construction) that aims with creating UI demo for IOT devices control. The UI idea is taken from dribble.',
       lang: {
-        'Python': pythonImg,
-        'ReactJs': reactImg,
+        'Flutter': flutterImg,
       }),
 ];
