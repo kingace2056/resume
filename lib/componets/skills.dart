@@ -28,7 +28,7 @@ class skills extends StatelessWidget {
             const Expanded(
               child: AnimatedProgressIndicator(
                 barColor: flutColor,
-                percent: 0.7,
+                percent: 0.75,
                 label: "Flutter",
               ),
             ),
@@ -38,7 +38,7 @@ class skills extends StatelessWidget {
             const Expanded(
               child: AnimatedProgressIndicator(
                 barColor: dartColor,
-                percent: 0.6,
+                percent: 0.75,
                 label: "Dart",
               ),
             ),
