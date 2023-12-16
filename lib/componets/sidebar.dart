@@ -1,9 +1,5 @@
-import 'dart:convert';
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../constraints.dart';
@@ -31,18 +27,18 @@ class bodyDrawer extends StatelessWidget {
             child: Column(
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                const addressInfo(
-                  title: 'Address',
-                  bText: 'Nepal',
-                ),
-                const addressInfo(
-                  title: 'City',
-                  bText: 'Nawalparasi(East)',
-                ),
-                const addressInfo(
-                  title: 'Age',
-                  bText: '23',
-                ),
+                // const addressInfo(
+                //   title: 'Address',
+                //   bText: 'Nepal',
+                // ),
+                // const addressInfo(
+                //   title: 'City',
+                //   bText: 'Nawalparasi(East)',
+                // ),
+                // const addressInfo(
+                //   title: 'Age',
+                //   bText: '23',
+                // ),
                 //TODO : uncomment below line
                 const skills(),
 

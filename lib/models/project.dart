@@ -24,7 +24,7 @@ List<Project> myProjects = [
   Project(
       repo: 'https://github.com/kingace2056/simple_snowfall/tree/main',
       live: 'https://pub.dev/packages/simple_snowfall',
-      title: 'simple_snowfall',
+      title: 'simple snowfall',
       description:
           'It is a simple snowfall animation package made using Flutter. ',
       lang: {'Flutter': flutterImg, 'Dart': dartImg}),

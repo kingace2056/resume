@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const profileAvatar = 'https://avatars.githubusercontent.com/u/46929074?v=4';
+const profileAvatar = 'https://avatars.githubusercontent.com/u/46929074';
 const githubLink = 'https://github.com/kingace2056';
 const bannerImage =
     'https://images.pexels.com/photos/12167613/pexels-photo-12167613.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
@@ -14,8 +14,10 @@ const bodyTextColor = Color(0xFF111010);
 const bgColor = Color(0xFF111010);
 const bgInfoTop = Color(0xff242438);
 const flutColor = Color(0xFF0553B1);
-const htmlColor = Color(0xFFF25D50);
-const dartColor = Color(0xFF6200EE);
+const jsColor = Color(0xFFEEBA25);
+const htmlColor = Color(0xFFE44D26);
+const cssColor = Color(0xFF2062AF);
+const dartColor = Color(0xFF0678CA);
 const socialColor = Color(0xFF24242E);
 const gitHubColor = Colors.black;
 const linkedInColor = Color(0xFF196EB9);

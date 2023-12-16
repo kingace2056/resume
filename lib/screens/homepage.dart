@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:resume_website/responsive.dart';
 import 'package:resume_website/widgets/size_config.dart';
 
-import '../componets/sidebar.dart';
-import '../constraints.dart';
+import 'package:resume_website/constraints.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -28,28 +27,10 @@ class HomePage extends StatelessWidget {
       //               icon: const Icon(Icons.menu)),
       //         )),
       // // drawer: const bodyDrawer(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: TrueSize.getWidth(context, 94),
-        ),
-        child: Center(
-          child: Container(
-            constraints: const BoxConstraints(maxHeight: maxWidth),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // if (Responsive.isDesktop(context))
-                // const Expanded(flex: 2, child: bodyDrawer()),
-                Expanded(
-                    flex: 7,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [...children],
-                      ),
-                    ))
-              ],
-            ),
-          ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(TrueSize.getWidth(context, 20)),
+        child: Column(
+          children: [...children],
         ),
       ),
       bottomNavigationBar: Container(
