@@ -143,7 +143,7 @@ class ProjectCard extends StatelessWidget {
                       maxLines: 2,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Expanded(
                     child: SingleChildScrollView(
                       child: Text(
