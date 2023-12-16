@@ -15,6 +15,20 @@ List<Project> myProjects = [
       description: 'AceWall is an wallpaper app made using Flutter. It utilizes the power of Pexel to deliver millions of Wallpapers',
       lang: {'Flutter': flutterImg, 'Dart': dartImg}),
   Project(
+      // repo: 'https://github.com/kingace2056/IOTui',
+      live: 'https://play.google.com/store/apps/details?id=com.mantra.tikvpn',
+      title: 'TikVPN',
+      description:
+          'TikVPn is an VPN app made using Flutter. It is a VPN app that provides free VPN service. It is live on playstore. I\'ve used Openvpn and free API\'s to provide VPN service.',
+      lang: {'Flutter': flutterImg, 'Dart': dartImg}),
+  Project(
+      repo: 'https://github.com/kingace2056/simple_snowfall/tree/main',
+      live: 'https://pub.dev/packages/simple_snowfall',
+      title: 'simple_snowfall',
+      description:
+          'It is a simple snowfall animation package made using Flutter. ',
+      lang: {'Flutter': flutterImg, 'Dart': dartImg}),
+  Project(
       live: 'https://aceshop.pages.dev',
       title: 'AceShop',
       lang: {'Flutter': flutterImg, 'Dart': dartImg, 'Node': nodeImg},

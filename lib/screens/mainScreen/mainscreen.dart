@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_website/screens/mainScreen/components/Certifications.dart';
+import 'package:resume_website/screens/mainScreen/components/flexing_proj.dart';
 
 import '/screens/homepage.dart';
 // import 'components/Acheivement.dart';
@@ -22,7 +23,8 @@ class MainScreen extends StatelessWidget {
       MyBadges(),
       SizedBox(
         height: 10,
-      )
+      ),
+      FlexingProject()
     ]);
   }
 }
