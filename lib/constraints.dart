@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const profileAvatar = 'https://avatars.githubusercontent.com/u/46929074?v=4';
+const githubLink = 'https://github.com/kingace2056';
 const bannerImage =
     'https://images.pexels.com/photos/12167613/pexels-photo-12167613.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
 const fName = 'Sarthak';
@@ -10,12 +11,14 @@ const secondaryColor = Color(0xFF242430);
 const cardColor = Color(0xFF080206);
 const darkColor = Color(0xFF191923);
 const bodyTextColor = Color(0xFF111010);
-const bgColor = Color(0xFF1E1E28);
+const bgColor = Color(0xFF111010);
 const bgInfoTop = Color(0xff242438);
 const flutColor = Color(0xFF0553B1);
 const htmlColor = Color(0xFFF25D50);
 const dartColor = Color(0xFF6200EE);
 const socialColor = Color(0xFF24242E);
+const gitHubColor = Colors.black;
+const linkedInColor = Color(0xFF196EB9);
 
 const defaultPadding = 20.0;
 const defaultDuration = Duration(seconds: 1); // we use it on our animation

@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:resume_website/responsive.dart';
+import 'package:resume_website/widgets/size_config.dart';
 
 import '../componets/sidebar.dart';
 import '../constraints.dart';
@@ -15,34 +16,39 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Responsive.isDesktop(context)
-          ? null
-          : AppBar(
-              backgroundColor: bgColor,
-              leading: Builder(
-                builder: (context) => IconButton(
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                    icon: const Icon(Icons.menu)),
-              )),
-      drawer: const bodyDrawer(),
-      body: Center(
-        child: Container(
-          constraints: const BoxConstraints(maxHeight: maxWidth),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (Responsive.isDesktop(context))
-                const Expanded(flex: 2, child: bodyDrawer()),
-              Expanded(
-                  flex: 7,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [...children],
-                    ),
-                  ))
-            ],
+      // appBar: Responsive.isDesktop(context)
+      //     ? null
+      //     : AppBar(
+      //         backgroundColor: bgColor,
+      //         leading: Builder(
+      //           builder: (context) => IconButton(
+      //               onPressed: () {
+      //                 Scaffold.of(context).openDrawer();
+      //               },
+      //               icon: const Icon(Icons.menu)),
+      //         )),
+      // // drawer: const bodyDrawer(),
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: TrueSize.getWidth(context, 94),
+        ),
+        child: Center(
+          child: Container(
+            constraints: const BoxConstraints(maxHeight: maxWidth),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // if (Responsive.isDesktop(context))
+                // const Expanded(flex: 2, child: bodyDrawer()),
+                Expanded(
+                    flex: 7,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [...children],
+                      ),
+                    ))
+              ],
+            ),
           ),
         ),
       ),

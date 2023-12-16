@@ -1,6 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume_website/responsive.dart';
+import 'package:resume_website/widgets/size_config.dart';
+import 'package:resume_website/widgets/textscale.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../constraints.dart';
 
@@ -11,65 +15,89 @@ class BannerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 2.8,
-      child: Stack(
-        fit: StackFit.expand,
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: TrueSize.getHeight(context, 100)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image(
-            image: NetworkImage(bannerImage),
-            fit: BoxFit.cover,
-          ),
-          Container(
-            color: darkColor.withOpacity(0.66),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Welcome To The world Of \nSarthak !',
-                  textAlign: TextAlign.start,
-                  style: !Responsive.isMobileLarge(context)
-                      ? Theme.of(context).textTheme.headline3?.copyWith(
-                          fontWeight: FontWeight.bold, color: Colors.white)
-                      : Theme.of(context).textTheme.subtitle1?.copyWith(
-                          fontWeight: FontWeight.bold, color: Colors.white),
-                ),
-                Row(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: TrueSize.getWidth(context, 231) / 2,
+                backgroundImage: const NetworkImage(profileAvatar),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 20 / 1920),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Hello I\'m ',
-                      style: !Responsive.isMobileLarge(context)
-                          ? Theme.of(context).textTheme.subtitle1!
-                          : TextStyle(color: Colors.white),
+                    Text('Hi! It’s me Sarthak Parajuli',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize: TrueSize.getWidth(context, 74))),
+                    Text('Flutter Developer',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: TrueSize.getWidth(context, 24))),
+                    Row(
+                      children: [
+                        Icon(
+                          FontAwesomeIcons.locationArrow,
+                          size: TrueSize.getWidth(context, 31),
+                        ),
+                        SizedBox(
+                          width: TrueSize.getWidth(context, 10),
+                        ),
+                        Text(' Devchuli, Gandaki, Nepal',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: TrueSize.getWidth(context, 24)))
+                      ],
                     ),
-                    if (!Responsive.isMobileLarge(context))
-                      SizedBox(
-                        height: defaultPadding / 2,
-                      ),
-                    BannerAnimatedText(),
                   ],
                 ),
-                SizedBox(
-                  height: defaultPadding,
-                ),
-                if (!Responsive.isMobileLarge(context))
-                  ElevatedButton(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: defaultPadding * 2,
-                              vertical: defaultPadding),
-                          backgroundColor: flutColor),
-                      child: Text(
-                        'Explore',
-                        style: Theme.of(context).textTheme.subtitle1!,
-                      ))
-              ],
-            ),
+              )
+            ],
+          ),
+          SizedBox(
+            height: TrueSize.getHeight(context, 50),
+          ),
+          const Row(
+            children: [
+              SizedBox(
+                width: 5,
+              ),
+              SocialsWidget(
+                  color: gitHubColor,
+                  icon: Icon(FontAwesomeIcons.github),
+                  name: 'GitHub',
+                  url: githubLink),
+              SocialsWidget(
+                  color: linkedInColor,
+                  icon: Icon(
+                    FontAwesomeIcons.linkedin,
+                    color: Colors.white,
+                  ),
+                  name: 'LinkedIn',
+                  url: 'https://www.linkedin.com/in/sarthakparajuli/'),
+              SocialsWidget(
+                  color: Color(0xFF9606CA),
+                  icon: Icon(
+                    FontAwesomeIcons.googlePlus,
+                    color: Colors.white,
+                  ),
+                  name: 'Gmail',
+                  url: 'mailto:sarthak123parajuli@gmail.com'),
+            ],
           )
         ],
       ),
@@ -77,23 +105,52 @@ class BannerWidget extends StatelessWidget {
   }
 }
 
-class BannerAnimatedText extends StatelessWidget {
-  const BannerAnimatedText({
-    Key? key,
-  }) : super(key: key);
-
+class SocialsWidget extends StatelessWidget {
+  const SocialsWidget({
+    super.key,
+    required this.name,
+    required this.url,
+    required this.icon,
+    required this.color,
+  });
+  final String name;
+  final String url;
+  final Widget icon;
+  final Color color;
   @override
   Widget build(BuildContext context) {
-    return DefaultTextStyle(
-      style: !Responsive.isMobile(context)
-          ? Theme.of(context).textTheme.subtitle1!
-          : TextStyle(color: Colors.white),
-      child: AnimatedTextKit(animatedTexts: [
-        TyperAnimatedText('Sarthak Parajuli'),
-        TyperAnimatedText('Flutter Developer'),
-        TyperAnimatedText('Web Developer'),
-        TyperAnimatedText('Computer Engineer'),
-      ]),
+    return GestureDetector(
+      onTap: () {
+        launchUrlString(url);
+      },
+      child: Container(
+        margin:
+            EdgeInsets.symmetric(horizontal: TrueSize.getWidth(context, 18)),
+        padding: EdgeInsets.all(TrueSize.getWidth(context, 13)),
+        decoration: BoxDecoration(
+            color: color,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.white.withOpacity(0.25),
+                  blurRadius: TrueSize.getWidth(context, 8))
+            ],
+            borderRadius: BorderRadius.circular(
+              TrueSize.getWidth(context, 15),
+            )),
+        child: Row(
+          children: [
+            icon,
+            SizedBox(
+              width: TrueSize.getWidth(context, 10),
+            ),
+            Text(name,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: TrueSize.getWidth(context, 23)))
+          ],
+        ),
+      ),
     );
   }
 }

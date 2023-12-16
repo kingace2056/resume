@@ -18,10 +18,6 @@ class introSarthak extends StatelessWidget {
             const Spacer(
               flex: 2,
             ),
-            const CircleAvatar(
-              radius: 50,
-              backgroundImage: NetworkImage(profileAvatar),
-            ),
             Spacer(
               flex: 2,
             ),
