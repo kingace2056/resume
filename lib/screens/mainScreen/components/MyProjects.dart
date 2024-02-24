@@ -1,4 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:resume_website/utils/device_check.dart';
 import 'package:resume_website/widgets/card_cutout.dart';
 import 'package:resume_website/widgets/size_config.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,7 +25,7 @@ class MyProjects extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('All Projects',
+          AutoSizeText('All Projects',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: TrueSize.getWidth(context, 40),
@@ -39,6 +41,7 @@ class MyProjects extends StatelessWidget {
               mobileLarge: ProjectGridview(
                 crossAxisCount: 2,
                 // childAspectRatio: 1.6,
+                childAspectRatio: 387.81 / 420,
               ),
               desktop: ProjectGridview(
                 childAspectRatio: 387.81 / 420,
@@ -101,6 +104,9 @@ class ProjectCard extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 387 / 420,
       child: Container(
+        margin: DeviceCheck.isMobile(context)
+            ? const EdgeInsets.symmetric(horizontal: 20)
+            : null,
         decoration: BoxDecoration(
           color: cardColor,
           borderRadius: BorderRadius.circular(31),
@@ -120,9 +126,17 @@ class ProjectCard extends StatelessWidget {
               top: 0,
               child: CustomPaint(
                 painter: RPSCustomPainter(),
-                child: Container(
-                  width: TrueSize.getWidth(context, 175),
-                  height: TrueSize.getWidth(context, 200),
+                child: SizedBox(
+                  width: DeviceCheck.isMobile(context)
+                      ? MediaQuery.of(context).size.width * 0.4
+                      : DeviceCheck.isTablet(context)
+                          ? MediaQuery.of(context).size.width * 0.2
+                          : TrueSize.getWidth(context, 175),
+                  height: DeviceCheck.isMobile(context)
+                      ? MediaQuery.of(context).size.width * 0.4
+                      : DeviceCheck.isTablet(context)
+                          ? MediaQuery.of(context).size.width * 0.2
+                          : TrueSize.getWidth(context, 200),
                 ),
               ),
             ),
@@ -132,32 +146,33 @@ class ProjectCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: TrueSize.getWidth(context, 387 - 175),
-                    child: Text(
+                    // width: TrueSize.getWidth(context, 387 - 175),
+                    child: AutoSizeText(
                       project.title!,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: TrueSize.getWidth(context, 40),
+                          fontSize: Theme.of(context)
+                              .textTheme
+                              .headlineSmall!
+                              .fontSize,
                           fontWeight: FontWeight.bold),
                       overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
+                      // maxLines: 2,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: Text(
+                      child: AutoSizeText(
                         project.description!,
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.start,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: TrueSize.getWidth(context, 15),
+                          fontSize:
+                              Theme.of(context).textTheme.bodyMedium!.fontSize,
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 8.0,
                   ),
                   if (project.lang!.isNotEmpty)
                     SingleChildScrollView(
@@ -168,32 +183,45 @@ class ProjectCard extends StatelessWidget {
                               index < project.lang!.length;
                               index++)
                             Padding(
-                              padding: const EdgeInsets.all(4.0),
+                              padding: EdgeInsets.all(
+                                  TrueSize.getWidth(context, 4.0)),
                               child: Chip(
-                                padding: const EdgeInsets.all(4),
+                                side: BorderSide.none,
+                                backgroundColor: const Color(0xFF111C44),
+                                color: MaterialStateProperty.all<Color>(
+                                    const Color(0xFF111C44)),
+                                padding: EdgeInsets.all(
+                                    TrueSize.getWidth(context, 4.0)),
                                 avatar: Container(
+                                  margin: const EdgeInsets.all(2),
                                   decoration: BoxDecoration(
-                                    color: secondaryColor,
                                     borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(
-                                      fit: BoxFit.cover,
+                                      fit: BoxFit.fitHeight,
                                       image: NetworkImage(
                                         project.lang!.values.elementAt(index),
-                                        headers: {},
                                       ),
                                     ),
                                   ),
                                 ),
-                                label: Text(
+                                label: AutoSizeText(
                                   project.lang!.keys.elementAt(index),
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .fontSize! -
+                                        3,
+                                  ),
                                 ),
                               ),
                             ),
                         ],
                       ),
                     ),
-                  const SizedBox(
-                    height: 8.0,
+                  SizedBox(
+                    height: TrueSize.getWidth(context, 8),
                   ),
                   Row(
                     children: [
@@ -202,7 +230,7 @@ class ProjectCard extends StatelessWidget {
                           onPressed: () {
                             launchUrlString(project.live!);
                           },
-                          child: const Text(
+                          child: const AutoSizeText(
                             'Live',
                             style: TextStyle(color: primaryColor),
                           ),
@@ -213,7 +241,7 @@ class ProjectCard extends StatelessWidget {
                           onPressed: () {
                             launchUrlString(project.repo!);
                           },
-                          child: const Text(
+                          child: const AutoSizeText(
                             'Github',
                             style: TextStyle(color: primaryColor),
                           ),

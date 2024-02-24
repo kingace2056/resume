@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
@@ -18,14 +19,13 @@ class skills extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Skills",
+        AutoSizeText("Skills",
             style: TextStyle(
               color: Colors.white,
               fontSize: TrueSize.getWidth(context, 40),
               fontWeight: FontWeight.w500,
             )),
         Row(
-          // ignore: prefer_const_literals_to_create_immutables
           children: [
             AnimatedProgressIndicator(
               barColor: flutColor,

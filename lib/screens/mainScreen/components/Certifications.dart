@@ -1,7 +1,12 @@
 // ignore: file_names
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:resume_website/models/badges.dart';
 import 'package:resume_website/responsive.dart';
+import 'package:resume_website/utils/device_check.dart';
+import 'package:resume_website/widgets/card_cutout.dart';
+import 'package:resume_website/widgets/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:url_launcher/url_launcher_string.dart';
@@ -19,9 +24,12 @@ class MyBadges extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          AutoSizeText(
             'Badge Showcase',
             style: Theme.of(context).textTheme.headline6,
+          ),
+          const SizedBox(
+            height: defaultPadding,
           ),
           const SizedBox(
             height: defaultPadding,
@@ -29,15 +37,19 @@ class MyBadges extends StatelessWidget {
           const Responsive(
               mobile: BadgeGridview(
                 crossAxisCount: 1,
-                childAspectRatio: 3 / 2.9,
+                childAspectRatio: 387.81 / 420,
               ),
               mobileLarge: BadgeGridview(
                 crossAxisCount: 2,
                 // childAspectRatio: 1.6,
+                childAspectRatio: 387.81 / 420,
               ),
-              desktop: BadgeGridview(),
+              desktop: BadgeGridview(
+                childAspectRatio: 387.81 / 420,
+                crossAxisCount: 4,
+              ),
               tablet: BadgeGridview(
-                childAspectRatio: 1.13,
+                childAspectRatio: 387.81 / 420,
                 crossAxisCount: 3,
               ))
         ],
@@ -49,8 +61,8 @@ class MyBadges extends StatelessWidget {
 class BadgeGridview extends StatelessWidget {
   const BadgeGridview({
     Key? key,
-    this.crossAxisCount = 3,
-    this.childAspectRatio = 1.13,
+    this.crossAxisCount = 4,
+    this.childAspectRatio = 387 / 420,
   }) : super(key: key);
   final int crossAxisCount;
   final double childAspectRatio;
@@ -64,49 +76,102 @@ class BadgeGridview extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
             childAspectRatio: childAspectRatio,
-            crossAxisSpacing: defaultPadding,
-            mainAxisSpacing: defaultPadding),
-        itemBuilder: (context, index) => BadgeCard(Badge: myBadges[index]));
+            crossAxisSpacing: TrueSize.getWidth(context, 50),
+            mainAxisSpacing: TrueSize.getWidth(context, 50)),
+        itemBuilder: (context, index) => BadgeCard(badge: myBadges[index]));
   }
 }
 
 class BadgeCard extends StatelessWidget {
   const BadgeCard({
-    Key? key,
-    required this.Badge,
-  }) : super(key: key);
-  final Badges Badge;
+    super.key,
+    required this.badge,
+  });
+
+  final Badges badge;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        launchUrlString(Badge.link!);
-      },
+    return AspectRatio(
+      aspectRatio: 387 / 420,
       child: Container(
-        padding: const EdgeInsets.all(defaultPadding),
-        color: secondaryColor,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              Badge.title!,
-              style: Theme.of(context).textTheme.subtitle2,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-            ),
-            const SizedBox(
-              height: defaultPadding,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: NetworkImage(Badge.image!), fit: BoxFit.contain)),
-              alignment: Alignment.center,
-              height: defaultPadding * 8,
+        margin: DeviceCheck.isMobile(context)
+            ? const EdgeInsets.symmetric(horizontal: 20)
+            : null,
+        decoration: BoxDecoration(
+          color: cardColor,
+          borderRadius: BorderRadius.circular(31),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.white.withOpacity(0.14),
+              offset: Offset.zero,
+              blurRadius: 10,
+              spreadRadius: 0.5,
             )
           ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  launchUrl(Uri.parse(badge.link!));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        badge.title!,
+                        maxLines: 5,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .fontSize,
+                            fontWeight: FontWeight.bold),
+                        overflow: TextOverflow.ellipsis,
+                        // maxLines: 2,
+                      ),
+                    ),
+                    Container(
+                      height: TrueSize.getHeight(context, 140),
+                      width: TrueSize.getHeight(context, 140),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: badge.title ==
+                                  "Flutter Advanced Course - Clean Architecture With MVVM™"
+                              ? Image.asset(udemyImage).image
+                              : NetworkImage(badge.image!),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Spacer(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: AutoSizeText(
+                    badge.description!,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize:
+                          Theme.of(context).textTheme.bodyMedium!.fontSize,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,15 +1,43 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume_website/componets/skills.dart';
+import 'package:resume_website/utils/device_check.dart';
 import 'package:resume_website/widgets/size_config.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../constraints.dart';
 
-class BannerWidget extends StatelessWidget {
+class BannerWidget extends StatefulWidget {
   const BannerWidget({
     super.key,
   });
+
+  @override
+  State<BannerWidget> createState() => _BannerWidgetState();
+}
+
+class _BannerWidgetState extends State<BannerWidget>
+    with TickerProviderStateMixin {
+  late Animation _animation;
+  late AnimationController _animationController;
+  late Animation<Color?> _colorAnimation;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
+    _animationController.repeat(reverse: true);
+    _colorAnimation = ColorTween(begin: Colors.blue, end: Colors.green)
+        .animate(_animationController);
+
+    _animation = Tween(begin: 2.0, end: 15.0).animate(_animationController)
+      ..addListener(() {
+        setState(() {});
+      });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +49,17 @@ class BannerWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: TrueSize.getWidth(context, 231) / 2,
-              backgroundImage: const NetworkImage(profileAvatar),
+            Container(
+              decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                BoxShadow(
+                    color: _colorAnimation.value!.withOpacity(0.5),
+                    blurRadius: _animation.value / 2,
+                    spreadRadius: _animation.value / 2),
+              ]),
+              child: CircleAvatar(
+                radius: TrueSize.getWidth(context, 231) / 2,
+                backgroundImage: const NetworkImage(profileAvatar),
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -33,30 +69,34 @@ class BannerWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Hi! It’s me Sarthak Parajuli',
+                  AutoSizeText('Hi! It’s me Sarthak Parajuli',
                       style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                           fontSize: TrueSize.getWidth(context, 74))),
-                  Text('Flutter Developer',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          fontSize: TrueSize.getWidth(context, 24))),
+                  AutoSizeText(
+                    'Flutter Developer',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: TrueSize.getWidth(context, 24)),
+                  ),
                   Row(
                     children: [
                       Icon(
                         FontAwesomeIcons.locationArrow,
-                        size: TrueSize.getWidth(context, 31),
+                        size: DeviceCheck.isMobile(context)
+                            ? Theme.of(context).textTheme.bodyMedium!.fontSize
+                            : TrueSize.getWidth(context, 24),
                       ),
                       SizedBox(
                         width: TrueSize.getWidth(context, 10),
                       ),
-                      Text(' Devchuli, Gandaki, Nepal',
+                      AutoSizeText(' Devchuli, Gandaki, Nepal',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w500,
-                              fontSize: TrueSize.getWidth(context, 24)))
+                              fontSize: TrueSize.getWidth(context, 24))),
                     ],
                   ),
                 ],
@@ -98,7 +138,7 @@ class BannerWidget extends StatelessWidget {
         SizedBox(
           height: TrueSize.getHeight(context, 50),
         ),
-        skills(),
+        const skills(),
       ],
     );
   }
@@ -123,26 +163,30 @@ class SocialsWidget extends StatelessWidget {
         launchUrlString(url);
       },
       child: Container(
+        width: DeviceCheck.isMobile(context)
+            ? MediaQuery.of(context).size.width * 0.2
+            : null,
         margin:
             EdgeInsets.symmetric(horizontal: TrueSize.getWidth(context, 18)),
         padding: EdgeInsets.all(TrueSize.getWidth(context, 13)),
         decoration: BoxDecoration(
-            color: color,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.white.withOpacity(0.25),
-                  blurRadius: TrueSize.getWidth(context, 8))
-            ],
-            borderRadius: BorderRadius.circular(
-              TrueSize.getWidth(context, 15),
-            )),
+          color: color,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.white.withOpacity(0.25),
+                blurRadius: TrueSize.getWidth(context, 8))
+          ],
+          borderRadius: DeviceCheck.isMobile(context)
+              ? BorderRadius.circular(10)
+              : BorderRadius.circular(TrueSize.getWidth(context, 20)),
+        ),
         child: Row(
           children: [
             icon,
             SizedBox(
               width: TrueSize.getWidth(context, 10),
             ),
-            Text(name,
+            AutoSizeText(name,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,

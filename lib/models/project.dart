@@ -24,7 +24,7 @@ List<Project> myProjects = [
   Project(
       repo: 'https://github.com/kingace2056/simple_snowfall/tree/main',
       live: 'https://pub.dev/packages/simple_snowfall',
-      title: 'simple snowfall',
+      title: 'simple \nsnowfall',
       description:
           'It is a simple snowfall animation package made using Flutter. ',
       lang: {'Flutter': flutterImg, 'Dart': dartImg}),
@@ -45,7 +45,7 @@ List<Project> myProjects = [
   Project(
       live:
           'https://play.google.com/store/apps/details?id=com.acestudios.driving_lisence',
-      title: 'Driving Lisence Nepal',
+      title: 'Driving Lisence\n Nepal',
       description: 'Driving Lisence Nepal is an App for the preparation of Driving lisence exam in Nepal. It includes Model Questions , General Quiz , Color-Vision Test etc. It is live on playstore',
       lang: {'Flutter': flutterImg, 'Dart': dartImg, 'NodeJs': nodeImg}),
   Project(
@@ -60,7 +60,7 @@ List<Project> myProjects = [
       }),
   Project(
       repo: 'https://github.com/kingace2056/MajorProject-IDS',
-      title: 'Intrusion Detection System',
+      title: 'Intrusion\nDetection System',
       description:
           'Realtime Network Intrusion Detection Using RandomForest . This is a project done by our group \'SASS\' as a fulfilment for Major Project in our Bachelor of Engineering - Computer. It is the project to detect attacks in network and notify Admin.',
       lang: {

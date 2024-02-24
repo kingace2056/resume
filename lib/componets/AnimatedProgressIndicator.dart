@@ -27,11 +27,11 @@ class AnimatedProgressIndicator extends StatelessWidget {
       child: TweenAnimationBuilder(
         tween: Tween<double>(begin: 0, end: percent),
         duration: defaultDuration,
-        builder: (context, double value, child) => Stack(
+        builder: (context, double tweenValue, child) => Stack(
           fit: StackFit.expand,
           children: [
             CircularProgressIndicator(
-              value: percent,
+              value: tweenValue,
               color: barColor,
               backgroundColor: darkColor,
               strokeWidth: TrueSize.getWidth(context, 25),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resume_website/screens/mainScreen/components/Certifications.dart';
 import 'package:resume_website/screens/mainScreen/components/flexing_proj.dart';
+import 'package:resume_website/utils/device_check.dart';
 
 import '/screens/homepage.dart';
 // import 'components/Acheivement.dart';
@@ -12,19 +13,20 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomePage(children: [
-      BannerWidget(),
+    return HomePage(children: [
+      DeviceCheck.isMobile(context) ? SizedBox(height: 20) : SizedBox.shrink(),
+      const BannerWidget(),
       //since no achievements yet
       // Acheivement(),
-      MyProjects(),
-      SizedBox(
+      const MyProjects(),
+      const SizedBox(
         height: 10,
       ),
-      MyBadges(),
-      SizedBox(
+      const MyBadges(),
+      const SizedBox(
         height: 10,
       ),
-      FlexingProject()
+      const FlexingProject()
     ]);
   }
 }
