@@ -1,18 +1,22 @@
 # Sarthak parajuli
 
-#  Flutter Project for Portfolio. 
-## Features 
-    - Made With Flutter 
-    - Responsive UI 
-    - Beautiful Colors 
+# Flutter Project for Portfolio.
+
+## Features
+
+    - Made With Flutter
+    - Responsive UI
+    - Beautiful Colors
     - Added CSS loading animation(To complete the void that flutter web takes to load )
     - ------------------------------------
 
-
-
- Inspired From  <a href="https://www.youtube.com/c/TheFlutterWay">TheFlutterWay</a>
+Inspired From <a href="https://www.youtube.com/c/TheFlutterWay">TheFlutterWay</a>
 
 ## Getting Started
+
+```
+flutter build web --web-renderer html
+```
 
 This project is a starting point for a Flutter application.
 
