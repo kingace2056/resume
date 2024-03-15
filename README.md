@@ -10,8 +10,6 @@
     - Added CSS loading animation(To complete the void that flutter web takes to load )
     - ------------------------------------
 
-Inspired From <a href="https://www.youtube.com/c/TheFlutterWay">TheFlutterWay</a>
-
 ## Getting Started
 
 ```
