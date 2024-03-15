@@ -36,6 +36,13 @@ List<Project> myProjects = [
       description:
           'AceShop is an Ecommerce App developed using Flutter with Node Backend. It is still under construction. If you are to check use Email: acestudios@gmail.com for user and admin@gmail.com for admin. Password: aceshop'),
   Project(
+      live: 'https://random-event-visualizer.pages.dev/',
+      title: 'Random Event\nVisualizer',
+      lang: {'Flutter': flutterImg, 'Dart': dartImg, 'Node': nodeImg},
+      repo: 'https://github.com/kingace2056/random_event_visualizer',
+      description:
+          'I was inspired by one tiktok video where someone painted 1000 cointosses and dice rolls. I thought of making it digital. So, I made this app to visualize random events like coin toss, dice roll, random number etc. It is made using Flutter. It is still under construction and I\'ll be adding much more. '),
+  Project(
       live: 'https://etherwall.netlify.app',
       repo: 'https://github.com/kingace2056/etherwall',
       title: 'EtherWall',
