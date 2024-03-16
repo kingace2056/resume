@@ -144,7 +144,7 @@ class _BannerWidgetState extends State<BannerWidget>
   }
 }
 
-class SocialsWidget extends StatelessWidget {
+class SocialsWidget extends StatefulWidget {
   const SocialsWidget({
     super.key,
     required this.name,
@@ -156,42 +156,68 @@ class SocialsWidget extends StatelessWidget {
   final String url;
   final Widget icon;
   final Color color;
+
+  @override
+  State<SocialsWidget> createState() => _SocialsWidgetState();
+}
+
+class _SocialsWidgetState extends State<SocialsWidget> {
+  bool isHover = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        launchUrlString(url);
+        launchUrlString(widget.url);
       },
-      child: Container(
-        width: DeviceCheck.isMobile(context)
-            ? MediaQuery.of(context).size.width * 0.2
-            : null,
-        margin:
-            EdgeInsets.symmetric(horizontal: TrueSize.getWidth(context, 18)),
-        padding: EdgeInsets.all(TrueSize.getWidth(context, 13)),
-        decoration: BoxDecoration(
-          color: color,
-          boxShadow: [
-            BoxShadow(
-                color: Colors.white.withOpacity(0.25),
-                blurRadius: TrueSize.getWidth(context, 8))
-          ],
-          borderRadius: DeviceCheck.isMobile(context)
-              ? BorderRadius.circular(10)
-              : BorderRadius.circular(TrueSize.getWidth(context, 20)),
-        ),
-        child: Row(
-          children: [
-            icon,
-            SizedBox(
-              width: TrueSize.getWidth(context, 10),
-            ),
-            AutoSizeText(name,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: TrueSize.getWidth(context, 23)))
-          ],
+      child: MouseRegion(
+        onEnter: (event) {
+          setState(() {
+            isHover = true;
+          });
+        },
+        onExit: (event) {
+          setState(() {
+            isHover = false;
+          });
+        },
+        child: Container(
+          width: DeviceCheck.isMobile(context)
+              ? MediaQuery.of(context).size.width * 0.2
+              : null,
+          margin:
+              EdgeInsets.symmetric(horizontal: TrueSize.getWidth(context, 18)),
+          padding: EdgeInsets.all(TrueSize.getWidth(context, 13)),
+          decoration: BoxDecoration(
+            color: widget.color,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.pink,
+                  offset: !isHover ? Offset(2, 0) : const Offset(-3, -1),
+                  blurRadius: isHover ? 8 : 3),
+              BoxShadow(
+                color: Colors.blue,
+                offset: !isHover ? Offset(2, 0) : const Offset(3, 1),
+                // blurRadius: controller.hovers[index] ? 20 : 10,
+                blurRadius: isHover ? 8 : 3,
+              ),
+            ],
+            borderRadius: DeviceCheck.isMobile(context)
+                ? BorderRadius.circular(10)
+                : BorderRadius.circular(TrueSize.getWidth(context, 20)),
+          ),
+          child: Row(
+            children: [
+              widget.icon,
+              SizedBox(
+                width: TrueSize.getWidth(context, 10),
+              ),
+              AutoSizeText(widget.name,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: TrueSize.getWidth(context, 23)))
+            ],
+          ),
         ),
       ),
     );
