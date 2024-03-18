@@ -29,7 +29,7 @@ class _BannerWidgetState extends State<BannerWidget>
     _animationController =
         AnimationController(vsync: this, duration: Duration(seconds: 2));
     _animationController.repeat(reverse: true);
-    _colorAnimation = ColorTween(begin: Colors.blue, end: Colors.green)
+    _colorAnimation = ColorTween(begin: Colors.pink, end: Colors.blue)
         .animate(_animationController);
 
     _animation = Tween(begin: 2.0, end: 15.0).animate(_animationController)

@@ -128,7 +128,7 @@ class _ProjectCardState extends State<ProjectCard> {
         },
         child: AnimatedContainer(
           curve: Curves.easeInOut,
-          duration: const Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 300),
           margin: DeviceCheck.isMobile(context)
               ? const EdgeInsets.symmetric(horizontal: 20)
               : isHover
@@ -140,11 +140,11 @@ class _ProjectCardState extends State<ProjectCard> {
             boxShadow: [
               BoxShadow(
                   color: Colors.pink,
-                  offset: const Offset(-4, -2),
+                  offset: isHover ? const Offset(4, 2) : const Offset(-4, -2),
                   blurRadius: isHover ? 20 : 10),
               BoxShadow(
                 color: Colors.blue,
-                offset: const Offset(4, 2),
+                offset: isHover ? const Offset(-4, -2) : const Offset(4, 2),
                 // blurRadius: controller.hovers[index] ? 20 : 10,
                 blurRadius: isHover ? 20 : 10,
               ),
