@@ -99,105 +99,104 @@ class _BadgeCardState extends State<BadgeCard> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      child: AspectRatio(
-        aspectRatio: 387 / 420,
-        child: MouseRegion(
-          onEnter: (event) {
-            setState(() {
-              isHover = true;
-            });
-          },
-          onExit: (event) {
-            setState(() {
-              isHover = false;
-            });
-          },
-          child: Container(
-            margin: DeviceCheck.isMobile(context)
-                ? const EdgeInsets.symmetric(horizontal: 20)
-                : isHover
-                    ? const EdgeInsets.all(0)
-                    : const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: cardColor,
-              borderRadius: BorderRadius.circular(31),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.pink,
-                    offset: const Offset(-4, -2),
-                    blurRadius: isHover ? 20 : 10),
-                BoxShadow(
-                  color: Colors.blue,
-                  offset: const Offset(4, 2),
-                  // blurRadius: controller.hovers[index] ? 20 : 10,
-                  blurRadius: isHover ? 20 : 10,
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      launchUrl(Uri.parse(widget.badge.link!));
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            widget.badge.title!,
-                            maxLines: 5,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: Theme.of(context)
-                                    .textTheme
-                                    .headlineSmall!
-                                    .fontSize,
-                                fontWeight: FontWeight.bold),
-                            overflow: TextOverflow.ellipsis,
-                            // maxLines: 2,
-                          ),
+    return AspectRatio(
+      aspectRatio: 387 / 420,
+      child: MouseRegion(
+        onEnter: (event) {
+          setState(() {
+            isHover = true;
+          });
+        },
+        onExit: (event) {
+          setState(() {
+            isHover = false;
+          });
+        },
+        child: AnimatedContainer(
+          curve: Curves.easeInOut,
+          duration: const Duration(milliseconds: 200),
+          margin: DeviceCheck.isMobile(context)
+              ? const EdgeInsets.symmetric(horizontal: 20)
+              : isHover
+                  ? const EdgeInsets.all(0)
+                  : const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: cardColor,
+            borderRadius: BorderRadius.circular(31),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.pink,
+                  offset: const Offset(-4, -2),
+                  blurRadius: isHover ? 20 : 10),
+              BoxShadow(
+                color: Colors.blue,
+                offset: const Offset(4, 2),
+                // blurRadius: controller.hovers[index] ? 20 : 10,
+                blurRadius: isHover ? 20 : 10,
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    launchUrl(Uri.parse(widget.badge.link!));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          widget.badge.title!,
+                          maxLines: 5,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall!
+                                  .fontSize,
+                              fontWeight: FontWeight.bold),
+                          overflow: TextOverflow.ellipsis,
+                          // maxLines: 2,
                         ),
-                        Container(
-                          height: TrueSize.getHeight(context, 140),
-                          width: TrueSize.getHeight(context, 140),
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: widget.badge.title ==
-                                      "Flutter Advanced Course - Clean Architecture With MVVM™"
-                                  ? Image.asset(udemyImage).image
-                                  : NetworkImage(widget.badge.image!),
-                              fit: BoxFit.cover,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
+                      ),
+                      Container(
+                        height: TrueSize.getHeight(context, 140),
+                        width: TrueSize.getHeight(context, 140),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: widget.badge.title ==
+                                    "Flutter Advanced Course - Clean Architecture With MVVM™"
+                                ? Image.asset(udemyImage).image
+                                : NetworkImage(widget.badge.image!),
+                            fit: BoxFit.cover,
                           ),
-                        )
-                      ],
-                    ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      )
+                    ],
                   ),
-                  Spacer(),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: AutoSizeText(
-                        widget.badge.description!,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize:
-                              Theme.of(context).textTheme.bodyMedium!.fontSize,
-                        ),
+                ),
+                Spacer(),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: AutoSizeText(
+                      widget.badge.description!,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize:
+                            Theme.of(context).textTheme.bodyMedium!.fontSize,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

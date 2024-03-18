@@ -126,7 +126,9 @@ class _ProjectCardState extends State<ProjectCard> {
             isHover = true;
           });
         },
-        child: Container(
+        child: AnimatedContainer(
+          curve: Curves.easeInOut,
+          duration: const Duration(milliseconds: 200),
           margin: DeviceCheck.isMobile(context)
               ? const EdgeInsets.symmetric(horizontal: 20)
               : isHover
