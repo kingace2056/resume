@@ -126,6 +126,15 @@ class _BannerWidgetState extends State<BannerWidget>
                 name: 'LinkedIn',
                 url: 'https://www.linkedin.com/in/sarthakparajuli/'),
             SocialsWidget(
+              color: gitHubColor,
+              name: ' Medium',
+              icon: Icon(
+                FontAwesomeIcons.medium,
+                color: Colors.white,
+              ),
+              url: 'https://sarthaknp.medium.com/',
+            ),
+            SocialsWidget(
                 color: Color(0xFF9606CA),
                 icon: Icon(
                   FontAwesomeIcons.googlePlus,
@@ -181,9 +190,9 @@ class _SocialsWidgetState extends State<SocialsWidget> {
           });
         },
         child: Container(
-          width: DeviceCheck.isMobile(context)
-              ? MediaQuery.of(context).size.width * 0.2
-              : null,
+          // width: DeviceCheck.isMobile(context)
+          //     ? MediaQuery.of(context).size.width * 0.2
+          //     : null,
           margin:
               EdgeInsets.symmetric(horizontal: TrueSize.getWidth(context, 18)),
           padding: EdgeInsets.all(TrueSize.getWidth(context, 13)),
@@ -215,7 +224,8 @@ class _SocialsWidgetState extends State<SocialsWidget> {
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
-                      fontSize: TrueSize.getWidth(context, 23)))
+                      fontSize: TrueSize.getWidth(
+                          context, DeviceCheck.isMobile(context) ? 18 : 23)))
             ],
           ),
         ),

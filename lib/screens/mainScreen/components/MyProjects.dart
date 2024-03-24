@@ -130,10 +130,12 @@ class _ProjectCardState extends State<ProjectCard> {
           curve: Curves.easeInOut,
           duration: const Duration(milliseconds: 300),
           margin: DeviceCheck.isMobile(context)
-              ? const EdgeInsets.symmetric(horizontal: 20)
-              : isHover
-                  ? const EdgeInsets.all(0)
-                  : const EdgeInsets.all(10),
+              ? const EdgeInsets.symmetric(horizontal: 20, vertical: 10)
+              : DeviceCheck.isTablet(context)
+                  ? const EdgeInsets.symmetric(horizontal: 20, vertical: 10)
+                  : isHover
+                      ? const EdgeInsets.all(0)
+                      : const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: cardColor,
             borderRadius: BorderRadius.circular(31),
@@ -159,12 +161,12 @@ class _ProjectCardState extends State<ProjectCard> {
                   painter: RPSCustomPainter(),
                   child: SizedBox(
                     width: DeviceCheck.isMobile(context)
-                        ? MediaQuery.of(context).size.width * 0.4
+                        ? MediaQuery.of(context).size.width * 0.3
                         : DeviceCheck.isTablet(context)
                             ? MediaQuery.of(context).size.width * 0.2
                             : TrueSize.getWidth(context, 175),
                     height: DeviceCheck.isMobile(context)
-                        ? MediaQuery.of(context).size.width * 0.4
+                        ? MediaQuery.of(context).size.width * 0.3
                         : DeviceCheck.isTablet(context)
                             ? MediaQuery.of(context).size.width * 0.2
                             : TrueSize.getWidth(context, 200),
@@ -199,10 +201,17 @@ class _ProjectCardState extends State<ProjectCard> {
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .fontSize,
+                            fontSize: DeviceCheck.isMobile(context) ||
+                                    DeviceCheck.isTablet(context)
+                                ? Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .fontSize! -
+                                    2
+                                : Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .fontSize,
                           ),
                         ),
                       ),

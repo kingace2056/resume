@@ -14,7 +14,9 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HomePage(children: [
-      DeviceCheck.isMobile(context) ? SizedBox(height: 20) : SizedBox.shrink(),
+      DeviceCheck.isMobile(context)
+          ? const SizedBox(height: 20)
+          : const SizedBox.shrink(),
       const BannerWidget(),
       //since no achievements yet
       // Acheivement(),
