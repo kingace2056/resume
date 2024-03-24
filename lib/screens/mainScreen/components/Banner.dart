@@ -87,7 +87,10 @@ class _BannerWidgetState extends State<BannerWidget>
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
                         fontSize: TrueSize.getWidth(context, 24)),
-                  ),
+                  ).animate().slide(
+                        begin: Offset(0, 100),
+                        end: Offset(0, 0),
+                      ),
                   Row(
                     children: [
                       Icon(
