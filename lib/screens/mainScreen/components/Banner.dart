@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume_website/componets/skills.dart';
 import 'package:resume_website/utils/device_check.dart';
@@ -27,7 +28,7 @@ class _BannerWidgetState extends State<BannerWidget>
   void initState() {
     // TODO: implement initState
     _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 2));
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
     _animationController.repeat(reverse: true);
     _colorAnimation = ColorTween(begin: Colors.pink, end: Colors.blue)
         .animate(_animationController);
@@ -70,10 +71,19 @@ class _BannerWidgetState extends State<BannerWidget>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AutoSizeText('Hi! It’s me Sarthak Parajuli',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                          fontSize: TrueSize.getWidth(context, 74))),
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                              fontSize: TrueSize.getWidth(context, 74)))
+                      .animate()
+                      .fade(
+                        duration: const Duration(milliseconds: 500),
+                      )
+                      .slideY(
+                        begin: -100,
+                        end: 0,
+                        duration: const Duration(milliseconds: 500),
+                      ),
                   AutoSizeText(
                     'Flutter Developer',
                     style: TextStyle(
@@ -201,11 +211,11 @@ class _SocialsWidgetState extends State<SocialsWidget> {
             boxShadow: [
               BoxShadow(
                   color: Colors.pink,
-                  offset: !isHover ? Offset(2, 0) : const Offset(-3, -1),
+                  offset: !isHover ? const Offset(2, 0) : const Offset(-3, -1),
                   blurRadius: isHover ? 8 : 3),
               BoxShadow(
                 color: Colors.blue,
-                offset: !isHover ? Offset(2, 0) : const Offset(3, 1),
+                offset: !isHover ? const Offset(2, 0) : const Offset(3, 1),
                 // blurRadius: controller.hovers[index] ? 20 : 10,
                 blurRadius: isHover ? 8 : 3,
               ),
