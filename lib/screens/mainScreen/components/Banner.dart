@@ -76,13 +76,10 @@ class _BannerWidgetState extends State<BannerWidget>
                               color: Colors.white,
                               fontSize: TrueSize.getWidth(context, 74)))
                       .animate()
-                      .fade(
-                        duration: const Duration(milliseconds: 500),
-                      )
+                      .fade()
                       .slideY(
                         begin: -100,
                         end: 0,
-                        duration: const Duration(milliseconds: 500),
                       ),
                   AutoSizeText(
                     'Flutter Developer',
